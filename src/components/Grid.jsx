@@ -90,7 +90,7 @@ const Grid = ({ difficulty }) => {
   // Create a new sudoku grid by shuffling the existing grid
   const createGridNumbers = (difficulty) => {
     let existingGridCopy = [];
-    GRID1.map((array, index) => {
+    GRID1.forEach((array, index) => {
       existingGridCopy[index] = array.slice();
     });
 
@@ -172,8 +172,8 @@ const Grid = ({ difficulty }) => {
 
     for (let i = 0; i < Math.floor(Math.random() * 4); i++) {
       // temp = temp[0].map((_, colIndex) => temp.map((row) => row[colIndex]));
-      temp = temp[0].map((val, index) =>
-        temp.map((row) => row[index]).reverse()
+      temp = grid[0].map((val, index) =>
+        grid.map((row) => row[index]).reverse()
       );
     }
 
@@ -223,7 +223,7 @@ const Grid = ({ difficulty }) => {
 
   const getGridCopy = (grid) => {
     let temp = [];
-    grid.map((array, index) => {
+    grid.forEach((array, index) => {
       temp[index] = array.slice();
     });
 
@@ -235,7 +235,7 @@ const Grid = ({ difficulty }) => {
       randomIndex;
 
     // while there remain elements to shuffle
-    while (currentIndex != 0) {
+    while (currentIndex !== 0) {
       // pick a remaining element
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
