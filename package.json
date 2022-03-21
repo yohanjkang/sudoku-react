@@ -2,7 +2,7 @@
   "name": "sudoku",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://yohanjkang.github.io/sudoku-react",
+  "homepage": "https://yohanjkang.github.io/sudoku-react/",
   "dependencies": {
     "-": "^0.0.1",
     "@fortawesome/fontawesome-free": "^6.1.0",
