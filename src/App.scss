@@ -1,0 +1,353 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+
+$mainFont: "Permanent Marker";
+
+@keyframes bounce {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(20px);
+  }
+  50% {
+    transform: translateX(-20px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes zoom-in {
+  from {
+    transform: scale(3);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+// light mode
+:root {
+  --background: #f0f2f5;
+  --background-alt: rgb(214, 214, 214);
+  --body: #fff;
+  --text: #000;
+  --filled-text: #000;
+  --filled-bg: #caf0f8;
+
+  --white: #fff;
+  --blue: rgb(0, 174, 239);
+  --red: #e91e63;
+  --black: #000;
+}
+
+.dark {
+  --background: #2a2a38;
+  --background-alt: #404057;
+  --body: #1a1a2e;
+  --text: #bebebe;
+  --filled-text: #bebebe;
+  --filled-bg: #000;
+
+  --blue-glow: rgba(0, 174, 239, 0.8);
+}
+
+html {
+  font-size: 18px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  user-select: none;
+  background-color: var(--body);
+  overflow: hidden;
+  font-family: $mainFont;
+  font-size: 1.5rem;
+}
+
+input {
+  border: 2px solid var(--background);
+  color: var(--text);
+
+  &:hover,
+  &:focus {
+    border-color: var(--blue);
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+// NAVBAR
+
+nav {
+  background-color: var(--body);
+  color: var(--text);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+}
+
+.dark-mode__toggle {
+  color: var(--blue);
+  margin: auto;
+  font-size: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 70px;
+  width: 90%;
+  max-width: 1300px;
+}
+
+svg {
+  display: block;
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(80%);
+  }
+}
+
+.fa-sun {
+  display: none;
+}
+
+.fa-moon {
+  display: block;
+}
+
+.dark .fa-sun {
+  display: block;
+}
+
+.dark .fa-moon {
+  display: none;
+}
+
+// HOMEPAGE
+
+.main {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+.lobby-screen {
+  width: 90%;
+  min-width: 440px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  transition: transform 0.2s ease-in-out;
+
+  & > * + * {
+    margin-top: 1.5em;
+  }
+}
+
+.title {
+  color: var(--blue);
+}
+
+span {
+  display: inline-block;
+}
+
+.btn {
+  background-color: var(--background);
+  height: 80px;
+  width: 280px;
+  color: var(--text);
+  border-radius: 0.5em;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  font-size: 1.5rem;
+
+  //   transition: all 0.2s ease-in-out;
+
+  &.blue {
+    cursor: pointer;
+    background-color: var(--blue);
+    color: var(--white);
+
+    &:hover {
+      filter: brightness(90%);
+    }
+  }
+}
+
+.difficulty-btn {
+  width: 50px;
+  height: 70px;
+  color: var(--blue);
+  font-size: 2rem;
+  margin: 0 15px;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(110%);
+  }
+}
+
+// GAME
+
+.main-game {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  gap: 5vw;
+}
+
+.game-details {
+  width: 30%;
+}
+
+.game-info {
+  color: var(--text);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#btn-pause {
+  color: var(--blue);
+  cursor: pointer;
+}
+
+// GRID
+
+.sudoku-grid {
+  display: grid;
+  gap: 5px;
+  grid-template-columns: repeat(9, auto);
+}
+
+.grid__cell {
+  background-color: var(--background);
+  width: 60px;
+  height: 60px;
+  border-radius: 0.125em;
+  color: var(--blue);
+  text-shadow: 1px 1px 20px var(--blue-glow);
+  display: grid;
+  place-items: center;
+  font-size: 1.125em;
+  cursor: pointer;
+
+  &.alt {
+    background-color: var(--background-alt);
+  }
+
+  &.filled {
+    background-color: var(--filled-bg);
+    color: var(--filled-text);
+  }
+
+  &.selected {
+    background-color: var(--blue);
+    color: white;
+  }
+
+  &.hover {
+    border: 3px solid var(--blue);
+  }
+
+  &.error {
+    background-color: var(--red);
+    color: white;
+
+    animation: bounce 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  &:hover {
+    border: 3px solid var(--blue);
+  }
+}
+
+.numbers {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: 100%;
+  gap: 1vw;
+  margin-top: 1.5em;
+  font-size: 1.25rem;
+}
+
+.number {
+  background-color: var(--background);
+  color: var(--text);
+  height: 50px;
+  border-radius: 0.5em;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+
+  &:hover {
+    border: 3px solid var(--blue);
+  }
+}
+
+.delete {
+  background-color: var(--red);
+  color: white;
+}
+
+.pause-screen {
+  background-color: var(--body);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  display: none;
+
+  &.active {
+    display: flex;
+  }
+
+  & > * + * {
+    margin-top: 20px;
+  }
+}
+
+.pause-screen.active .btn {
+  cursor: pointer;
+
+  animation: zoom-in 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  &:hover {
+    filter: brightness(90%);
+  }
+}
+
+@media screen and (max-width: 1100px) {
+}
