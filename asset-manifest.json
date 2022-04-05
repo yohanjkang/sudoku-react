@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/sudoku-react/static/css/main.1705ff38.css",
-    "main.js": "/sudoku-react/static/js/main.e9fd64aa.js",
+    "main.css": "/sudoku-react/static/css/main.c467240a.css",
+    "main.js": "/sudoku-react/static/js/main.d352dcc2.js",
     "index.html": "/sudoku-react/index.html",
-    "main.1705ff38.css.map": "/sudoku-react/static/css/main.1705ff38.css.map",
-    "main.e9fd64aa.js.map": "/sudoku-react/static/js/main.e9fd64aa.js.map"
+    "main.c467240a.css.map": "/sudoku-react/static/css/main.c467240a.css.map",
+    "main.d352dcc2.js.map": "/sudoku-react/static/js/main.d352dcc2.js.map"
   },
   "entrypoints": [
-    "static/css/main.1705ff38.css",
-    "static/js/main.e9fd64aa.js"
+    "static/css/main.c467240a.css",
+    "static/js/main.d352dcc2.js"
   ]
 }
